@@ -1,7 +1,6 @@
 import os
 from flask import Flask, abort, request
 import requests
-import random
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -102,27 +101,6 @@ def parsingStr(pStr):
             outStr += '輸入指令包含吃即可(不要有空格)\n\n'
             outStr += '111/01/25 ver 1.0.9'
             return outStr
-        elif (pStr[0] == '空' or pStr[0] == '多') and pStr[-2:] == '如何':
-            if pStr[0] == '空':
-                return(randomGuess('空','多',pStr[1:-2]))
-            else:
-                return(randomGuess('多','空',pStr[1:-2]))
-        elif '吃' in pStr:
-            return randomEat()
-        elif '帥' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '本本好帥'
-            else:
-                return '本本好帥'
-
-            #return '本本好帥'
-        elif '美' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '八寶八寶 耶波搭'
-            else:
-                return '八寶八寶 耶波搭'
         else:
             return 'Error'
             
