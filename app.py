@@ -268,14 +268,11 @@ def parsingStr(pStr):
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####  
 import re
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
     # Send To Line
     reply = TextSendMessage(text=f"{get_message}")
     line_bot_api.reply_message(event.reply_token, reply)
-        
-#主程式
-    if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+
