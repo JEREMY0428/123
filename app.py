@@ -271,9 +271,9 @@ import re
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
-    
-    if parsingStr(message) != 'Error':
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(parsingStr(message)))
+    # Send To Line
+    reply = TextSendMessage(text=f"{get_message}")
+    line_bot_api.reply_message(event.reply_token, reply)
         
 #主程式
     if __name__ == "__main__":
