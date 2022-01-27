@@ -1,8 +1,7 @@
 import os
-from datetime import datetime
-
 from flask import Flask, abort, request
-
+import requests
+import random
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -58,7 +57,6 @@ while startValue < 100000:
     else:
         startValue += 100
         
-import random
 
 def parsingStr(pStr):
     splitStrArray = pStr.split(' ')
