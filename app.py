@@ -6,7 +6,7 @@ from flask import Flask, abort, request
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import *
 
 app = Flask(__name__)
 
@@ -265,10 +265,17 @@ def parsingStr(pStr):
     else:
         return 'Error'
     
-    
+#訊息傳遞區塊
+##### 基本上程式編輯都在這個function #####  
+import re
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
     
     if parsingStr(message) != 'Error':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(parsingStr(message)))
+        
+#主程式
+    if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
