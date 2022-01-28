@@ -101,7 +101,7 @@ def parsingStr(pStr):
             outStr = ''
             outStr += '====== 指令清單 =====\n'
             outStr += 'A) 空/多 價格 (折扣)\n'
-            outStr += '簡易計算進出場的賺賠\n折扣為選填，格式為0.25，預設2.5折\n'
+            outStr += '簡易計算進出場的賺賠\n折扣為選填，格式為0.28，預設2.8折\n'
             outStr += 'ex: 多 120.5 / 空 115 / 空 50.5 0.28\n\n'
             outStr += 'B) 價格\n'
             outStr += '簡易計算上下1/1.5/2%大概為多少\n'
@@ -113,10 +113,15 @@ def parsingStr(pStr):
             outStr += '用亂數來給建議(?)切勿盲目跟單(?)\n'
             outStr += '指令重點為開頭為多or空，結尾為如何，不用空格\n'
             outStr += 'ex: 空3035如何 / 多台積電如何\n\n'
-            outStr += 'E) 今日三關價\n'
+            outStr += 'E) 懶人版理論亞當\n'
+            outStr += '輸入高/低點跟中間K棒開收，簡單試算滿足區大約在哪\n'
+            outStr += '格式為三個數字中間空白隔開，第一個為高/低點\n'
+            outStr += '後面兩個數字為中間K棒的開/收盤價(順序不重要)\n'
+            outStr += 'ex: 23.5 30 30.8\n\n'
+            outStr += 'F) 今日三關價\n'
             outStr += '輸入昨日高/低點，簡單試算今日三關價大約在哪\n'
             outStr += 'ex: Q 110 107\n\n'
-            outStr += 'F) 出場價格參考\n'
+            outStr += 'G) 出場價格參考\n'
             outStr += '輸入 k/K 加上開盤價格，提供出場方式的參考點位\n'
             outStr += 'ex: k 50.4 / K 121.5\n\n'
             outStr += '111/01/28 ver 1.0.0'
@@ -155,7 +160,7 @@ def parsingStr(pStr):
                     outStr = ''
                     if splitStrArray[0] == '空':
                         for k in range(targetIndex-5,targetIndex+5):
-                            fee = (targetValue + valueList[k]) * 1.425 * 0.25
+                            fee = (targetValue + valueList[k]) * 1.425 * 0.28
                             fee = round(fee,2)
                             tax = targetValue * 1.5
                             tax = round(tax,2)
@@ -260,6 +265,20 @@ def parsingStr(pStr):
                 else:
                     return 'Error'
             else:
+                return 'Error'
+        else:
+            return 'Error'
+        elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
+            if is_number(splitStrArray[1]):
+                #return 'test'
+                High = float(splitStrArray[1])
+                Low = float(splitStrArray[2])
+                outStr = ''
+                outStr += '昨日高點為 :' + splitStrArray[1] +  '低點 :' splitStrArray[2] +"\n"
+                #return 'test'
+                return outStr
+            else:
+                #return 'test2'
                 return 'Error'
         else:
             return 'Error'
