@@ -206,52 +206,34 @@ def parsingStr(pStr):
         elif pStr == 'Help' or pStr == 'help' or pStr == '幫助':
             outStr = ''
             outStr += '====== 指令清單 =====\n'
-            outStr += 'A) 空/多 價格 (折扣)\n'
-            outStr += '簡易計算進出場的賺賠\n折扣為選填，格式為0.25，預設2.5折\n'
+            outStr += '1) 空/多 價格 (折扣)\n'
+            outStr += '簡易計算進出場的賺賠\n折扣為選填，格式為0.28，預設2.8折\n'
             outStr += 'ex: 多 120.5 / 空 115 / 空 50.5 0.28\n\n'
-            outStr += 'B) 價格\n'
+            outStr += '2) 價格\n'
             outStr += '簡易計算上下1/1.5/2%大概為多少\n'
             outStr += 'ex: 90 / 215.5\n\n'
-            outStr += 'C) count/Count/結算 總成交金額 應收付金額 (折扣)\n'
+            outStr += '3) count/Count/結算 總成交金額 應收付金額 (折扣)\n'
             outStr += '幫助月退的計算損益\n折扣為選填，格式為2.5，預設2.5折\n'
             outStr += 'ex: Count 123000 365 0.25 / 結算 323000 -1255\n\n'
-            outStr += 'D) 猜運勢(?)\n'
+            outStr += '4) 猜運勢(?)\n'
             outStr += '用亂數來給建議(?)切勿盲目跟單(?)\n'
             outStr += '指令重點為開頭為多or空，結尾為如何，不用空格\n'
             outStr += 'ex: 空3035如何 / 多台積電如何\n\n'
-            outStr += 'E) 懶人翻亞當\n'
+            outStr += '5) 亞當\n'
             outStr += '輸入高/低點跟中間K棒開收，簡單試算滿足區大約在哪\n'
             outStr += '格式為三個數字中間空白隔開，第一個為高/低點\n'
             outStr += '後面兩個數字為中間K棒的開/收盤價(順序不重要)\n'
             outStr += 'ex: 23.5 30 30.8\n\n'
-            outStr += 'F) 出場價格參考\n'
+            outStr += '6) 出場價格參考\n'
             outStr += '輸入 k/K 加上開盤價格，提供出場方式的參考點位\n'
             outStr += 'ex: k 50.4 / K 121.5\n\n'
-            outStr += 'G) 吃啥好勒～\n'
-            outStr += '輸入指令包含吃即可(不要有空格)\n\n'
-            outStr += '111/01/25 ver 1.0.9'
+            outStr += '111/01/28 ver 1.0.0'
             return outStr
         elif (pStr[0] == '空' or pStr[0] == '多') and pStr[-2:] == '如何':
             if pStr[0] == '空':
                 return(randomGuess('空','多',pStr[1:-2]))
             else:
                 return(randomGuess('多','空',pStr[1:-2]))
-        elif '吃' in pStr:
-            return randomEat()
-        elif '帥' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '本本 本本 好帥'
-            else:
-                return '酷酷 酷酷 帥爆了～'
-
-            #return '\大榮/\大榮/\大榮/ 帥爆了～'
-        elif '美' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '八寶八寶 耶波搭'
-            else:
-                return '八寶八寶 耶波搭'
         else:
             return 'Error'
             
@@ -265,7 +247,7 @@ def parsingStr(pStr):
                     outStr = ''
                     if splitStrArray[0] == '空':
                         for k in range(targetIndex-5,targetIndex+5):
-                            fee = (targetValue + valueList[k]) * 1.425 * 0.25
+                            fee = (targetValue + valueList[k]) * 1.425 * 0.28
                             fee = round(fee,2)
                             tax = targetValue * 1.5
                             tax = round(tax,2)
@@ -287,6 +269,7 @@ def parsingStr(pStr):
                     return 'Error'
             else:
                 return 'Error'
+             
         elif splitStrArray[0] == 'k' or splitStrArray[0] == 'K':
             if is_number(splitStrArray[1]):
                 #return 'test'
@@ -305,6 +288,9 @@ def parsingStr(pStr):
                 return 'Error'
         else:
             return 'Error'
+         
+         
+         
     elif len(splitStrArray) == 3:
         if splitStrArray[0] == 'count' or splitStrArray[0] == 'Count' or splitStrArray[0] == '結算':
             if is_number(splitStrArray[1]) and is_number(splitStrArray[2]):
@@ -373,6 +359,24 @@ def parsingStr(pStr):
                 return 'Error'
         else:
             return 'Error'
+         
+         
+          elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
+            if is_number(splitStrArray[1]):
+                #return 'test'
+                targetValue = float(splitStrArray[1])
+                targetValue2 = float(splitStrArray[2])
+                outStr = ''
+                outStr += '昨日高點為 ' + splitStrArray[1] + "\n"
+                outStr += '1) 上關價為: ' + str(round(float(targetValue-targetValue2)/2,2)) + "\n"
+                #return 'test'
+                return outStr
+            else:
+                #return 'test2'
+                return 'Error'
+        else:
+            return 'Error'
+         
     elif len(splitStrArray) == 4:
         if splitStrArray[0] == 'count' or splitStrArray[0] == 'Count' or splitStrArray[0] == '結算':
             if is_number(splitStrArray[1]) and is_number(splitStrArray[2]) and is_number(splitStrArray[3]):
