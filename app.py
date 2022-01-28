@@ -198,6 +198,14 @@ def parsingStr(pStr):
                 return outStr
             else:
                 return 'Error'
+        elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
+            if is_number(splitStrArray[1]) and is_number(splitStrArray[2]):
+                outStr = ''
+                outStr += '昨日高點 : '+splitStrArray[1]+'\n'
+                outStr += '昨日低點 : '+splitStrArray[2]+'\n'
+                return outStr
+            else:
+                return 'Error'        
         elif is_number(splitStrArray[0]) and is_number(splitStrArray[1]) and is_number(splitStrArray[2]):
             num0 = float(splitStrArray[0])
             num1 = float(splitStrArray[1])
@@ -248,15 +256,6 @@ def parsingStr(pStr):
                         return 'Error'
                 else:
                     return 'Error'
-            else:
-                return 'Error'
-        
-        elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
-            if is_number(splitStrArray[1]) and is_number(splitStrArray[2]):
-                outStr = ''
-                outStr += '昨日高點 : '+splitStrArray[1]+'\n'
-                outStr += '昨日低點 : '+splitStrArray[2]+'\n'
-                return outStr
             else:
                 return 'Error'
         else:
