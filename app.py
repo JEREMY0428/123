@@ -266,9 +266,7 @@ def parsingStr(pStr):
                     return 'Error'
             else:
                 return 'Error'
-        else:
-            return 'Error'
-        elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
+      elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
             if is_number(splitStrArray[1]):
                 #return 'test'
                 High = float(splitStrArray[1])
@@ -280,6 +278,8 @@ def parsingStr(pStr):
             else:
                 #return 'test2'
                 return 'Error'
+        else:
+            return 'Error'
         else:
             return 'Error'
     elif len(splitStrArray) == 4:
