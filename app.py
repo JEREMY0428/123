@@ -214,7 +214,7 @@ def parsingStr(pStr):
                 outStr += '今日上關價位 : ' + str(up)+'\n'
                 outStr += '今日中關價位 : ' + str(mid)+'\n'
                 outStr += '今日下關價位 : ' + str(low)+'\n'
-                outStr += '三關互為支撐與壓力，過為支撐，破則變為壓力 \n 上、中、下關之間來回，上關賣，中關賣或買，下關買'
+                outStr += '三關互為撐壓，過撐，破為壓 '
                 return outStr
             else:
                 return 'Error'        
