@@ -71,7 +71,7 @@ def randomGuess(a,b,target):
     if r == 0: # 1/2001
         return 'ALL IN !! (1/2001機率!)'
     elif r > 0 and r < 301: # 300/2001 約= 15%
-        return a+target+'我覺得不太妙QQ'
+        return a+target+'我覺得不太妙'
     elif r > 300 and r < 601: # 300/2001 約= 15%
         return a+target+'我覺得不錯喔!'
     elif r > 600 and r < 1001: # 400/2001 約= 20%
@@ -224,7 +224,7 @@ def parsingStr(pStr):
             outStr += '格式為三個數字中間空白隔開，第一個為高/低點\n'
             outStr += '後面兩個數字為中間K棒的開/收盤價(順序不重要)\n'
             outStr += 'ex: 23.5 30 30.8\n\n'
-            outStr += 'F) K佬不在時，出場價格參考\n'
+            outStr += 'F) 出場價格參考\n'
             outStr += '輸入 k/K 加上開盤價格，提供出場方式的參考點位\n'
             outStr += 'ex: k 50.4 / K 121.5\n\n'
             outStr += 'G) 吃啥好勒～\n'
@@ -241,17 +241,17 @@ def parsingStr(pStr):
         elif '帥' in pStr:
             r = random.randint(0,1)
             if r == 0:
-                return '\大榮/\大榮/\大榮/ 帥爆了～'
+                return '本本 本本 好帥'
             else:
-                return '\K佬/\K佬/\K佬/ 帥爆了～'
+                return '酷酷 酷酷 帥爆了～'
 
             #return '\大榮/\大榮/\大榮/ 帥爆了～'
         elif '美' in pStr:
             r = random.randint(0,1)
             if r == 0:
-                return '\云云/\云云/\云云/ 最漂釀～～'
+                return '八寶八寶 耶波搭'
             else:
-                return '\云云/\云云/\云云/ 最漂釀～～'
+                return '八寶八寶 耶波搭'
         else:
             return 'Error'
             
@@ -293,11 +293,11 @@ def parsingStr(pStr):
                 targetValue = float(splitStrArray[1])
                 outStr = ''
                 outStr += '開盤價格為 ' + splitStrArray[1] + "\n"
-                outStr += '1) 下跌2.5%出場價格約為 : ' + str(round(targetValue*0.975,2)) + "\n"
-                outStr += '2) 盤中漲超過4%(' + str(round(targetValue*1.04,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.01,2)) + "\n"
-                outStr += '3) 盤中漲超過6%(' + str(round(targetValue*1.06,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.015,2)) + "\n"
-                outStr += '4) 盤中漲超過8%(' + str(round(targetValue*1.08,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.03,2)) + "\n"
-                outStr += '5) 盤中漲停解開下殺後，\n    出場點為 : ' + str(round(targetValue*1.04,2)) + "\n"
+                outStr += '1) 下跌2%出場價格約為 : ' + str(round(targetValue*0.98,2)) + "\n"
+                outStr += '2) 盤中漲超過4%(' + str(round(targetValue*1.04,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.015,2)) + "\n"
+                outStr += '3) 盤中漲超過6%(' + str(round(targetValue*1.06,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.02,2)) + "\n"
+                outStr += '4) 盤中漲超過8%(' + str(round(targetValue*1.08,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.04,2)) + "\n"
+                outStr += '5) 盤中漲停解開下殺後，\n    出場點為 : ' + str(round(targetValue*1.05,2)) + "\n"
                 #return 'test'
                 return outStr
             else:
