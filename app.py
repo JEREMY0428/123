@@ -20,23 +20,21 @@ handler = WebhookHandler('e4dbc1c5f012a8f7ffcd1303eceb82d1')
 #line_bot_api.push_message('U878201ff43cf137fffe547e352400c86', TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
-@app.route("/callback", methods=['POST'])
+@app.route("/", methods=["GET", "POST"])
 def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
- 
-  
-    # get request body as text
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
- 
-    # handle webhook body
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
- 
-    return 'OK'
+
+    if request.method == "GET":
+        return "Hello Heroku"
+    if request.method == "POST":
+        signature = request.headers["X-Line-Signature"]
+        body = request.get_data(as_text=True)
+
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            abort(400)
+
+        return "OK"
 
 #判斷輸入是否為數字
 # By : https://www.itread01.com/content/1549772101.html
