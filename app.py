@@ -254,8 +254,6 @@ def parsingStr(pStr):
         elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
             if is_number(splitStrArray[1]) and is_number(splitStrArray[2]) :
                 #return 'test'
-                High = float(splitStrArray[1])
-                Low = float(splitStrArray[2])
                 outStr = ''
                 outStr += '昨日高點為 :' + splitStrArray[1] +  '低點 :'+ splitStrArray[2] +"\n"
                 #return 'test'
