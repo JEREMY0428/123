@@ -211,9 +211,9 @@ def parsingStr(pStr):
                 outStr = ''
                 outStr += '昨日高點 : '+splitStrArray[1]+'\n'
                 outStr += '昨日低點 : '+splitStrArray[2]+'\n'
-                outStr += '今日上關價位 : ' + str(up)+'\n'
-                outStr += '今日中關價位 : ' + str(mid)+'\n'
-                outStr += '今日下關價位 : ' + str(low)+'\n'
+                outStr += '今日上關價位 : ' + str(round(up,2))+'\n'
+                outStr += '今日中關價位 : ' + str(round(mid,2))+'\n'
+                outStr += '今日下關價位 : ' + str(round(low,2))+'\n'
                 outStr += '三關互為撐壓，過撐，破為壓 '
                 return outStr
             else:
