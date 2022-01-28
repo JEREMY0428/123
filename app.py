@@ -131,22 +131,6 @@ def parsingStr(pStr):
                 return(randomGuess('空','多',pStr[1:-2]))
             else:
                 return(randomGuess('多','空',pStr[1:-2]))
-        elif '吃' in pStr:
-            return randomEat()
-        elif '帥' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '本本 本本 好帥'
-            else:
-                return '酷酷 酷酷 帥爆了～'
-
-            #return '\大榮/\大榮/\大榮/ 帥爆了～'
-        elif '美' in pStr:
-            r = random.randint(0,1)
-            if r == 0:
-                return '八寶八寶 耶波搭'
-            else:
-                return '八寶八寶 耶波搭'
         else:
             return 'Error'
             
@@ -266,20 +250,19 @@ def parsingStr(pStr):
                     return 'Error'
             else:
                 return 'Error'
-      elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
+        
+        elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
             if is_number(splitStrArray[1]):
                 #return 'test'
                 High = float(splitStrArray[1])
                 Low = float(splitStrArray[2])
                 outStr = ''
-                outStr += '昨日高點為 :' + splitStrArray[1] +  '低點 :' splitStrArray[2] +"\n"
+                outStr += '昨日高點為 :' + splitStrArray[1] +  '低點 :'+ splitStrArray[2] +"\n"
                 #return 'test'
                 return outStr
             else:
                 #return 'test2'
                 return 'Error'
-        else:
-            return 'Error'
         else:
             return 'Error'
     elif len(splitStrArray) == 4:
