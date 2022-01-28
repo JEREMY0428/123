@@ -113,7 +113,7 @@ def parsingStr(pStr):
             outStr += '用亂數來給建議(?)切勿盲目跟單(?)\n'
             outStr += '指令重點為開頭為多or空，結尾為如何，不用空格\n'
             outStr += 'ex: 空3035如何 / 多台積電如何\n\n'
-            outStr += 'E) 懶人版理論亞當\n'
+            outStr += 'E) 懶人版亞當理論\n'
             outStr += '輸入高/低點跟中間K棒開收，簡單試算滿足區大約在哪\n'
             outStr += '格式為三個數字中間空白隔開，第一個為高/低點\n'
             outStr += '後面兩個數字為中間K棒的開/收盤價(順序不重要)\n'
@@ -252,7 +252,7 @@ def parsingStr(pStr):
                 return 'Error'
         
         elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
-            if is_number(splitStrArray[1]):
+            if is_number(splitStrArray[1]) and is_number(splitStrArray[2]) :
                 #return 'test'
                 High = float(splitStrArray[1])
                 Low = float(splitStrArray[2])
