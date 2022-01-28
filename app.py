@@ -200,9 +200,21 @@ def parsingStr(pStr):
                 return 'Error'
         elif splitStrArray[0] == 'q' or splitStrArray[0] == 'Q':
             if is_number(splitStrArray[1]) and is_number(splitStrArray[2]):
+                num1 = float(splitStrArray[1])
+                num2 = float(splitStrArray[2])
+                #上關：今高＋（今高－今低）× 0.382
+                up = num1 + (num1 -num2) * 0.382
+                #中關：（今高＋今低）÷ 2。
+                mid = (num1 + num2) / 2
+                #下關：今低－（今高-今低）× 0.382。
+                low = num2 - (num1 -num2) *0.382
                 outStr = ''
                 outStr += '昨日高點 : '+splitStrArray[1]+'\n'
                 outStr += '昨日低點 : '+splitStrArray[2]+'\n'
+                outStr += '今日上關價位 : ' + str(up)+'\n'
+                outStr += '今日中關價位 : ' + str(mid)+'\n'
+                outStr += '今日下關價位 : ' + str(low)+'\n'
+                outStr += '三關互為支撐與壓力，過為支撐，破則變為壓力 \n 上、中、下關之間來回，上關賣，中關賣或買，下關買'
                 return outStr
             else:
                 return 'Error'        
