@@ -154,7 +154,7 @@ def parsingStr(pStr):
                         return outStr
                     else:
                         for k in range(targetIndex-5,targetIndex+5):
-                            fee = (targetValue + valueList[k]) * 1.425 * 0.25
+                            fee = (targetValue + valueList[k]) * 1.425 * 0.28
                             fee = round(fee,2)
                             tax = valueList[k] * 1.5
                             tax = round(tax,2)
