@@ -124,6 +124,9 @@ def parsingStr(pStr):
             outStr += 'G) 出場價格參考\n'
             outStr += '輸入 k/K 加上開盤價格，提供出場方式的參考點位\n'
             outStr += 'ex: k 50.4 / K 121.5\n\n'
+            outStr += 'H) 逆勢操作 (CDP)\n'
+            outStr += '輸入昨日收盤/高點/低點，計算CDP參考點位\n'
+            outStr += 'ex: C 113 114.5 111\n\n'
             outStr += '111/01/28 ver 1.0.0'
             return outStr
         elif (pStr[0] == '空' or pStr[0] == '多') and pStr[-2:] == '如何':
@@ -286,6 +289,23 @@ def parsingStr(pStr):
                 return outStr
             else:
                 return 'Error'
+        elif splitStrArray[0] == 'C':
+            if is_number(splitStrArray[1]) and is_number(splitStrArray[2]) and is_number(splitStrArray[3]):
+                num1 = float(splitStrArray[1]) #收盤
+                num2 = float(splitStrArray[2]) #高點
+                num3 = float(splitStrArray[3]) #低點
+                #CDP = (昨日收*2+昨日高+昨日低)/4
+                CDP = (num1*2+num2+num3)/4
+                HL = num2-num3
+                outStr = ''
+                outStr += '多頭點位 : '+str(round(CDP+HL,2))+'\n'
+                outStr += '轉強點位 : '+str(round(CDP*2-num3,2))+'\n'
+                outStr += '盤整點位 : '+str(round(CDP,2))+'\n'
+                outStr += '轉弱點位 : '+str(round(CDP*2-num2,2))+'\n'
+                outStr += '空頭點位 : '+str(round(CDP-HL,2))+'\n'
+                return outStr    
+            else:
+                return 'Error'    
         else:
             return 'Error'
     else:
