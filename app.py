@@ -175,11 +175,11 @@ def parsingStr(pStr):
                 targetValue = float(splitStrArray[1])
                 outStr = ''
                 outStr += '開盤價格為 ' + splitStrArray[1] + "\n"
-                outStr += '1) 下跌2%出場價格約為 : ' + str(round(targetValue*0.98,2)) + "\n"
-                outStr += '2) 盤中漲超過4%(' + str(round(targetValue*1.04,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.015,2)) + "\n"
-                outStr += '3) 盤中漲超過6%(' + str(round(targetValue*1.06,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.02,2)) + "\n"
-                outStr += '4) 盤中漲超過8%(' + str(round(targetValue*1.08,2)) + ")後，\n    出場點為 : " + str(round(targetValue*1.04,2)) + "\n"
-                outStr += '5) 盤中漲停解開下殺後，\n    出場點為 : ' + str(round(targetValue*1.05,2)) + "\n"
+                outStr += '1) 下跌2%停損價格約為 : ' + str(round(targetValue*0.98,2)) + "\n"
+                outStr += '2) 盤中漲超過4%(' + str(round(targetValue*1.04,2)) + ")後，\n    停損/停利點為 : " + str(round(targetValue*1.015,2)) + "\n"
+                outStr += '3) 盤中漲超過6%(' + str(round(targetValue*1.06,2)) + ")後，\n    停損/停利點為 : " + str(round(targetValue*1.02,2)) + "\n"
+                outStr += '4) 盤中漲超過8%(' + str(round(targetValue*1.08,2)) + ")後，\n    停損/停利點為 : " + str(round(targetValue*1.04,2)) + "\n"
+                outStr += '5) 盤中漲停解開下殺後，\n    停損/停利點為 : ' + str(round(targetValue*1.05,2)) + "\n"
                 #return 'test'
                 return outStr
             else:
